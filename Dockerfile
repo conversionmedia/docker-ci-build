@@ -1,7 +1,7 @@
 FROM --platform=linux/amd64 php:7.4-cli
 
 RUN apt-get update -qq \
-	&& apt-get install -qqy build-essential libssl-dev unzip git-core git-ftp lftp
+	&& apt-get install -qqy build-essential libssl-dev unzip git-core git-ftp lftp rsync
 
 RUN curl -OLs https://composer.github.io/installer.sig \
 	&& php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
@@ -24,3 +24,7 @@ RUN curl https://curl.se/download/curl-7.72.0.tar.gz > /tmp/curl.tar.gz \
 	&& make install
 
 RUN ldconfig
+
+RUN mkdir -p ~/.ssh/ \
+	&& 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )' \
+	&& eval $(ssh-agent -s)
