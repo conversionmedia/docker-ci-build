@@ -1,4 +1,4 @@
-FROM php:7.4-cli
+FROM --platform=linux/amd64 php:7.4-cli
 
 RUN apt-get update -qq \
 	&& apt-get install -qqy build-essential libssl-dev unzip git-core git-ftp lftp
