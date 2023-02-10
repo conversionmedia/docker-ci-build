@@ -22,3 +22,5 @@ RUN curl https://curl.se/download/curl-7.72.0.tar.gz > /tmp/curl.tar.gz \
 	&& ./configure --prefix=/usr --disable-libcurl-option --disable-shared --with-libssh2=/usr/ \
 	&& make \
 	&& make install
+
+RUN ldconfig
