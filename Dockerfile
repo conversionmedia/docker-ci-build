@@ -23,5 +23,9 @@ RUN curl https://curl.se/download/curl-7.72.0.tar.gz > /tmp/curl.tar.gz \
 	&& make \
 	&& make install
 
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+	&& chmod +x wp-cli.phar \
+	&& mv wp-cli.phar /usr/local/bin/wp
+
 RUN ldconfig \
 	&& mkdir -p ~/.ssh/
